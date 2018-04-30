@@ -92,6 +92,16 @@ The `kibana` class also supports removal through use of `ensure => absent`:
 class { 'kibana': ensure => absent }
 ```
 
+#### Example of using Hiera for config settings:
+
+```
+kibana::manage_repo: false
+kibana::config:
+  server.host: "%{::ipaddress}"
+  server.name: 'My Kibana site'
+  elasticsearch.url: 'myelasticsearchcluster.domain.tld:9200'
+```
+
 ### Plugins
 
 Kibana plugins can be managed by this module.
